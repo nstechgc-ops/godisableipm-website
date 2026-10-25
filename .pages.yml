@@ -108,3 +108,41 @@ content:
           - { name: verse, label: Verse, type: text }
           - { name: verseRef, label: Verse reference, type: string }
           - { name: bio, label: Bio, type: text }
+  - name: live
+    label: Live Prayer
+    type: file
+    path: src/_data/live.json
+    fields:
+      - { name: heading, label: Heading, type: string }
+      - { name: intro, label: Intro, type: text }
+      - { name: youtubeChannelId, label: "YouTube channel ID (starts with UC…)", type: string }
+      - { name: youtubeChannelUrl, label: "YouTube channel link", type: string }
+      - { name: facebookPageUrl, label: "Facebook page link (end with /)", type: string }
+      - { name: dialInNumber, label: "Dial-in phone number (optional)", type: string }
+      - { name: dialInCode, label: "Dial-in access code (optional)", type: string }
+      - { name: meetingLink, label: "Zoom / Google Meet link (optional)", type: string }
+      - { name: note, label: Note under schedule, type: text }
+      - name: sessions
+        label: Prayer sessions (Eastern Time)
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: days, label: "Days (as shown, e.g. Monday – Friday)", type: string }
+          - { name: dayNums, label: "Day numbers (0=Sun … 6=Sat, e.g. 1,2,3,4,5)", type: string }
+          - { name: start, label: "Start time 24h (e.g. 05:00)", type: string }
+          - { name: end, label: "End time 24h (e.g. 05:30)", type: string }
+          - { name: timeLabel, label: "Time as shown (e.g. 5:00–5:30 AM)", type: string }
+  - name: verses
+    label: Verse of the Day
+    type: file
+    path: src/_data/verses.json
+    fields:
+      - { name: translation, label: Translation, type: string }
+      - name: verses
+        label: "Verses (one shows per day, in order)"
+        type: object
+        list: true
+        fields:
+          - { name: ref, label: Reference, type: string }
+          - { name: text, label: Verse text, type: text }

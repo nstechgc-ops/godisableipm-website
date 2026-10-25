@@ -11,27 +11,41 @@ title: Home
       <h1>{{ home.heroTitle }}<span>{{ home.heroSubtitle }}</span></h1>
       <p class="lead light">{{ home.heroText }}</p>
       <div class="btnrow">
-        <a class="btn" href="/prayer-lines#send">{{ home.heroButton }}</a>
-        <a class="btn ghost light" href="/prayer-lines">Join Our Prayer Lines</a>
+        <a class="btn" href="/live">Join Live Prayer</a>
+        <a class="btn ghost light" href="/prayer-lines#send">{{ home.heroButton }}</a>
       </div>
     </div>
   </div>
 </header>
+
+{% include "votd.njk" %}
+
 <main>
   <section>
-    <div class="wrap narrow center">
-      <p class="eyebrow">Welcome</p>
-      <h2>{{ home.welcomeHeading }}</h2>
-      <div class="prose lead">{{ home.welcome | md | safe }}</div>
+    <div class="wrap split welcome">
+      <div>
+        <p class="eyebrow">Welcome</p>
+        <h2>{{ home.welcomeHeading }}</h2>
+        <div class="prose">{{ home.welcome | md | safe }}</div>
+        <p class="flags" aria-label="Members around the world">🇩🇪 Germany · 🇳🇬 Nigeria · 🇨🇲 Cameroon · 🇺🇸 USA · 🇨🇦 Canada · 🇬🇧 UK</p>
+      </div>
+      <div class="liveside">{% include "nextsession.njk" %}<a class="btn" href="/live">Go to Live Prayer</a></div>
     </div>
   </section>
+
   <section class="cards">
-    <div class="wrap grid3">
-      <a class="card" href="/prayer-lines"><h3>Prayer Lines</h3><p>Morning prayers Monday – Friday, 5:00–5:30am, and prayer lines open 24/7.</p><span>Join us ›</span></a>
-      <a class="card" href="/mission"><h3>Our Mission</h3><p>Supporting women, widows, teenage mothers and children in Cameroon.</p><span>See the mission ›</span></a>
-      <a class="card" href="/testimonies"><h3>Testimonies</h3><p>Healing, breakthroughs and restoration through the power of prayer.</p><span>Read them ›</span></a>
+    <div class="wrap">
+      <p class="eyebrow center">Get Involved</p>
+      <h2 class="center">How you can connect with us</h2>
+      <div class="grid4">
+        <a class="card icon" href="/live"><span class="ic" aria-hidden="true">🔴</span><h3>Pray Live</h3><p>Morning prayer Monday – Friday on YouTube and Facebook.</p><span class="go">Join live ›</span></a>
+        <a class="card icon" href="/prayer-lines#send"><span class="ic" aria-hidden="true">🙏</span><h3>Send a Request</h3><p>Share your prayer request. Our prayer lines are open 24/7.</p><span class="go">Send a request ›</span></a>
+        <a class="card icon" href="/mission"><span class="ic" aria-hidden="true">💜</span><h3>Support the Mission</h3><p>Help women, widows and children in Cameroon.</p><span class="go">See the mission ›</span></a>
+        <a class="card icon" href="/store"><span class="ic" aria-hidden="true">👕</span><h3>Bless Someone</h3><p>Buy a T-shirt and we give one to someone in need.</p><span class="go">Shop T-shirts ›</span></a>
+      </div>
     </div>
   </section>
+
   <section class="feature">
     <div class="wrap split">
       <img src="{{ home.featureImage }}" alt="{{ home.featureHeading }}" loading="lazy">
@@ -39,9 +53,18 @@ title: Home
         <p class="eyebrow">Current Mission</p>
         <h2>{{ home.featureHeading }}</h2>
         <p>{{ home.featureText }}</p>
-        <div class="btnrow"><a class="btn" href="/mission#give">{{ home.featureButton }}</a><a class="btn ghost" href="/store">Shop T-shirts</a></div>
+        <div class="btnrow"><a class="btn" href="/mission#give">{{ home.featureButton }}</a><a class="btn ghost" href="/mission">Learn more</a></div>
       </div>
     </div>
   </section>
+
+  <section class="testi">
+    <div class="wrap narrow center">
+      <p class="eyebrow">Testimonies</p>
+      <blockquote class="big">“After years of struggling with illness, I reached out to the prayer line for support. Through the prayers of the GIA community, I experienced a miraculous healing that transformed my life.”</blockquote>
+      <a class="btn ghost" href="/testimonies">Read more testimonies</a>
+    </div>
+  </section>
+
   {% include "give.njk" %}
 </main>

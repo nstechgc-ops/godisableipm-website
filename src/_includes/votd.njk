@@ -1,0 +1,35 @@
+{# Verse of the Day: rendered at build time, refreshed in the browser by the visitor's date #}
+{% set vlist = verses.verses %}
+{% set first = vlist[0] %}
+<section class="votd" id="verse-of-the-day">
+  <div class="wrap narrow center">
+    <p class="eyebrow light">Verse of the Day · <span data-votd-date></span></p>
+    <blockquote class="votdq">
+      <p data-votd-text>{{ first.text }}</p>
+      <cite data-votd-ref>{{ first.ref }}</cite>
+    </blockquote>
+    <div class="share">
+      <a class="chip" data-share="whatsapp" href="https://wa.me/?text={{ (first.text + ' — ' + first.ref) | urlencode }}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="chip" data-share="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ (site.url + '/#verse-of-the-day') | urlencode }}" target="_blank" rel="noopener">Facebook</a>
+      <button class="chip" type="button" data-share="copy">Copy verse</button>
+    </div>
+    <p class="votdsrc">{{ verses.translation }} · public domain</p>
+  </div>
+</section>
+<script>
+(function(){
+  var el=document.getElementById('verse-of-the-day'); if(!el) return;
+  function apply(list){
+    var now=new Date(), start=new Date(2026,0,1);
+    var day=Math.floor((new Date(now.getFullYear(),now.getMonth(),now.getDate())-start)/864e5);
+    var v=list[((day%list.length)+list.length)%list.length];
+    el.querySelector('[data-votd-text]').textContent=v.text;
+    el.querySelector('[data-votd-ref]').textContent=v.ref;
+    el.querySelector('[data-votd-date]').textContent=now.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+    var msg=v.text+' — '+v.ref+' (WEB)\n\n'+location.origin+'/#verse-of-the-day';
+    el.querySelector('[data-share=whatsapp]').href='https://wa.me/?text='+encodeURIComponent(msg);
+    el.querySelector('[data-share=copy]').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(v.text+' — '+v.ref):Promise.reject()).then(function(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy verse'},2000)}).catch(function(){prompt('Copy the verse:',v.text+' — '+v.ref)});};
+  }
+  fetch('/verses.json').then(function(r){return r.json()}).then(apply).catch(function(){});
+})();
+</script>

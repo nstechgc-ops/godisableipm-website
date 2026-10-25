@@ -1,0 +1,40 @@
+---
+layout: base.njk
+permalink: /live/
+title: Live Prayer
+description: Join God Is Able International Prayer Ministries for live prayer on YouTube and Facebook, or call in. Morning prayer Monday – Friday.
+---
+<header class="phero"><div class="wrap center"><p class="eyebrow light">Pray With Us</p><h1>{{ live.heading }}</h1><p class="lead light">{{ live.intro }}</p></div></header>
+<main>
+  <section>
+    <div class="wrap livegrid">
+      <div class="liveplayer">
+        {% if live.youtubeChannelId %}
+        <div class="video"><iframe src="https://www.youtube.com/embed/live_stream?channel={{ live.youtubeChannelId }}" title="God Is Able live prayer on YouTube" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <p class="small">If we're not live right now, the player shows our latest stream. <a href="{{ live.youtubeChannelUrl or ('https://www.youtube.com/channel/' + live.youtubeChannelId) }}" target="_blank" rel="noopener">Open our YouTube channel</a>.</p>
+        {% else %}
+        <div class="video placeholder"><div><p class="eyebrow light">YouTube Live</p><p>Our YouTube channel is coming soon.<br>Join us on Facebook Live in the meantime.</p></div></div>
+        {% endif %}
+        <div class="watchrow">
+          {% if live.youtubeChannelUrl %}<a class="btn" href="{{ live.youtubeChannelUrl }}" target="_blank" rel="noopener">Watch on YouTube</a>{% endif %}
+          <a class="btn {% if live.youtubeChannelUrl %}ghost{% endif %}" href="{{ live.facebookPageUrl }}live" target="_blank" rel="noopener">Watch on Facebook Live</a>
+        </div>
+      </div>
+      <aside class="liveside">
+        {% include "nextsession.njk" %}
+        <div class="card">
+          <h3>Schedule</h3>
+          {% for s in live.sessions %}<p><b>{{ s.name }}</b><br>{{ s.days }}, {{ s.timeLabel or (s.start + "–" + s.end) }} Eastern Time</p>{% endfor %}
+          <p class="small">{{ live.note }}</p>
+        </div>
+        <div class="card">
+          <h3>Join by phone or online</h3>
+          {% if live.dialInNumber %}<p>Call <a href="tel:{{ live.dialInNumber | replace(' ','') | replace('-','') }}">{{ live.dialInNumber }}</a>{% if live.dialInCode %}<br>Access code: <b>{{ live.dialInCode }}</b>{% endif %}</p>{% endif %}
+          {% if live.meetingLink %}<p><a class="btn small" href="{{ live.meetingLink }}" target="_blank" rel="noopener">Join the prayer call</a></p>{% endif %}
+          {% if not live.dialInNumber and not live.meetingLink %}<p>Call us on <a href="tel:{{ site.phone | replace('-','') }}">{{ site.phone }}</a> to be added to the prayer line.</p>{% endif %}
+        </div>
+      </aside>
+    </div>
+  </section>
+  {% set form = 'prayer' %}{% include "form.njk" %}
+</main>

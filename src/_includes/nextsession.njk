@@ -1,0 +1,38 @@
+{# Next live prayer session, shown in the visitor's own time plus key member regions #}
+<div class="nextsess" data-tz="{{ live.timezone }}" data-sessions='{{ live.sessions | dump | safe }}'>
+  <p class="eyebrow">Next Live Prayer</p>
+  <p class="nsname" data-ns-name>{{ live.sessions[0].name }} · {{ live.sessions[0].days }}, {{ live.sessions[0].timeLabel }} Eastern</p>
+  <p class="nscount" data-ns-count></p>
+  <ul class="nszones" data-ns-zones></ul>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.nextsess').forEach(function(box){
+    var tz=box.dataset.tz, S=JSON.parse(box.dataset.sessions||'[]'); if(!S.length) return;
+    function offset(t){var p=new Intl.DateTimeFormat('en-US',{timeZone:tz,hourCycle:'h23',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'}).formatToParts(t),o={};p.forEach(function(x){o[x.type]=x.value});return (Date.UTC(o.year,o.month-1,o.day,o.hour,o.minute,o.second)-t.getTime())/6e4;}
+    function at(y,m,d,hh,mm){var g=Date.UTC(y,m,d,hh,mm);var off=offset(new Date(g));var t=new Date(g-off*6e4);off=offset(t);return new Date(g-off*6e4);}
+    function zoneParts(t){var p=new Intl.DateTimeFormat('en-US',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit',weekday:'short'}).formatToParts(t),o={};p.forEach(function(x){o[x.type]=x.value});return o;}
+    var now=new Date(), best=null;
+    for(var i=0;i<8;i++){
+      var base=new Date(now.getTime()+i*864e5), z=zoneParts(base);
+      var wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(z.weekday);
+      S.forEach(function(s){
+        var days=String(s.dayNums||'0,1,2,3,4,5,6').split(',').map(Number); if(days.indexOf(wd)<0) return;
+        var a=s.start.split(':'), b=(s.end||s.start).split(':');
+        var st=at(+z.year,+z.month-1,+z.day,+a[0],+a[1]), en=at(+z.year,+z.month-1,+z.day,+b[0],+b[1]);
+        if(en>now && (!best||st<best.st)) best={s:s,st:st,en:en};
+      });
+      if(best) break;
+    }
+    if(!best) return;
+    var f=function(z){return best.st.toLocaleString(undefined,{timeZone:z,weekday:'short',hour:'numeric',minute:'2-digit'})};
+    box.querySelector('[data-ns-name]').textContent=best.s.name+' · '+best.st.toLocaleString(undefined,{weekday:'long',hour:'numeric',minute:'2-digit'})+' your time';
+    var live=now>=best.st&&now<best.en, mins=Math.round((best.st-now)/6e4);
+    var c=box.querySelector('[data-ns-count]');
+    if(live){c.innerHTML='<span class="livedot"></span> Live now — join below';box.classList.add('islive');}
+    else{var h=Math.floor(mins/60),m=mins%60;c.textContent='Starts in '+(h>=24?Math.floor(h/24)+'d '+(h%24)+'h':(h?h+'h ':'')+m+'m');}
+    var Z=[['Florida (Eastern)','America/New_York'],['Cameroon & Nigeria','Africa/Lagos'],['Germany','Europe/Berlin'],['United Kingdom','Europe/London']];
+    box.querySelector('[data-ns-zones]').innerHTML=Z.map(function(z){return '<li><span>'+z[0]+'</span><b>'+f(z[1])+'</b></li>'}).join('');
+  });
+})();
+</script>

@@ -1,0 +1,22 @@
+{
+  "heading": "Live Prayer",
+  "intro": "Pray with us live. Join on YouTube or Facebook, or call in from anywhere in the world.",
+  "youtubeChannelId": "",
+  "youtubeChannelUrl": "",
+  "facebookPageUrl": "https://www.facebook.com/God-Is-Able-International-Prayer-Ministry-1665275250399692/",
+  "dialInNumber": "",
+  "dialInCode": "",
+  "meetingLink": "",
+  "timezone": "America/New_York",
+  "sessions": [
+    {
+      "name": "Morning Prayer",
+      "days": "Monday – Friday",
+      "dayNums": "1,2,3,4,5",
+      "start": "05:00",
+      "end": "05:30",
+      "timeLabel": "5:00–5:30 AM"
+    }
+  ],
+  "note": "Our prayer lines are also open 24/7 for prayer requests and to schedule individual prayer."
+}

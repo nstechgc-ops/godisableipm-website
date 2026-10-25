@@ -11,6 +11,8 @@ By joining our prayer line, you become a part of a loving community dedicated to
 
 ## Prayer Times
 
+[Join our live prayer on YouTube and Facebook →](/live)
+
 **Morning prayers: Monday – Friday, 5:00am – 5:30am.** Our prayer lines are also open 24/7 for prayer requests and to schedule individual prayers.
 
 If God sent you here, I believe it was for a reason. Join us as we pray with you, for you, or for a loved one. While you're at it, please send a prayer our way. May God continue to bless you, and may your righteous prayers be answered in the name of our Lord and Savior Jesus. Amen!
