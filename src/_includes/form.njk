@@ -1,0 +1,18 @@
+{% set kind = form or 'contact' %}
+<section class="formsec" id="send">
+  <div class="wrap narrow">
+    <p class="eyebrow center">{% if kind == 'prayer' %}Send Your Prayer Request{% elif kind == 'testimony' %}Share Your Testimony{% else %}Get in Touch{% endif %}</p>
+    <h2 class="center">{% if kind == 'prayer' %}We will pray with you{% elif kind == 'testimony' %}Your story could encourage someone{% else %}We'd love to hear from you{% endif %}</h2>
+    <form class="form" action="https://formsubmit.co/{{ site.email }}" method="POST">
+      <input type="hidden" name="_subject" value="{% if kind == 'prayer' %}New prayer request{% elif kind == 'testimony' %}New testimony{% else %}New message{% endif %} — godisableipm.com">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="{{ site.url }}/thank-you">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label>Name<input type="text" name="name" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Phone (optional)<input type="tel" name="phone"></label>
+      <label>{% if kind == 'prayer' %}Your prayer request{% elif kind == 'testimony' %}Your testimony{% else %}Message{% endif %}<textarea name="message" rows="6" required></textarea></label>
+      <button class="btn" type="submit">Send</button>
+    </form>
+  </div>
+</section>

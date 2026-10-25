@@ -1,0 +1,47 @@
+---
+layout: base.njk
+permalink: /
+title: Home
+---
+<header class="hero">
+  <div class="wrap heroin">
+    <img class="herologo" src="/images/logo.png" alt="God Is Able International Prayer Ministries" width="520" height="390">
+    <div>
+      <p class="eyebrow light">{{ site.tagline }}</p>
+      <h1>{{ home.heroTitle }}<span>{{ home.heroSubtitle }}</span></h1>
+      <p class="lead light">{{ home.heroText }}</p>
+      <div class="btnrow">
+        <a class="btn" href="/prayer-lines#send">{{ home.heroButton }}</a>
+        <a class="btn ghost light" href="/prayer-lines">Join Our Prayer Lines</a>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="wrap narrow center">
+      <p class="eyebrow">Welcome</p>
+      <h2>{{ home.welcomeHeading }}</h2>
+      <div class="prose lead">{{ home.welcome | md | safe }}</div>
+    </div>
+  </section>
+  <section class="cards">
+    <div class="wrap grid3">
+      <a class="card" href="/prayer-lines"><h3>Prayer Lines</h3><p>Morning prayers Monday – Friday, 5:00–5:30am, and prayer lines open 24/7.</p><span>Join us ›</span></a>
+      <a class="card" href="/mission"><h3>Our Mission</h3><p>Supporting women, widows, teenage mothers and children in Cameroon.</p><span>See the mission ›</span></a>
+      <a class="card" href="/testimonies"><h3>Testimonies</h3><p>Healing, breakthroughs and restoration through the power of prayer.</p><span>Read them ›</span></a>
+    </div>
+  </section>
+  <section class="feature">
+    <div class="wrap split">
+      <img src="{{ home.featureImage }}" alt="{{ home.featureHeading }}" loading="lazy">
+      <div>
+        <p class="eyebrow">Current Mission</p>
+        <h2>{{ home.featureHeading }}</h2>
+        <p>{{ home.featureText }}</p>
+        <div class="btnrow"><a class="btn" href="/mission#give">{{ home.featureButton }}</a><a class="btn ghost" href="/store">Shop T-shirts</a></div>
+      </div>
+    </div>
+  </section>
+  {% include "give.njk" %}
+</main>

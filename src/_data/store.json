@@ -1,0 +1,24 @@
+{
+  "intro": "God Is Able International Ministry is blessed to announce that we have t-shirts available. Every time someone buys a t-shirt, we bless someone in need with a free t-shirt. Grab one for your friend, family member, colleague or yourself. Bless someone and be blessed.",
+  "verse": "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver. And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.",
+  "verseRef": "2 Corinthians 9:6-8",
+  "products": [
+    {
+      "name": "God Is Able T-shirt",
+      "price": "20.00",
+      "description": "100% cotton t-shirts. We pray over our t-shirts before sending them out, to stand as a symbol of fellowship, love and sharing with others. Comes in all sizes and colors — grab yours now. Tell us your size, color and design in the order note.",
+      "image": "/images/tshirts-front-designs.jpg"
+    }
+  ],
+  "gallery": [
+    {
+      "image": "/images/tshirts-back-designs.jpg"
+    },
+    {
+      "image": "/images/tshirts-touching-lives.jpg"
+    },
+    {
+      "image": "https://images.zoogletools.com/s:bzglfiles/u/598864/ca4fe3a4ea8eddf4a45a40e5689508829fc7cd4a/original/img-8980.jpg"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+---
+layout: base.njk
+permalink: /store/
+title: Store
+---
+<header class="phero"><div class="wrap center"><p class="eyebrow light">Bless Someone and Be Blessed</p><h1>God Is Able T-Shirts</h1></div></header>
+<main>
+  <section><div class="wrap narrow center"><p class="lead">{{ store.intro }}</p><blockquote>“{{ store.verse }}”<cite>{{ store.verseRef }}</cite></blockquote></div></section>
+  {% for p in store.products %}
+  <section class="feature"><div class="wrap split">
+    <img src="{{ p.image | u }}" alt="{{ p.name }}" loading="lazy">
+    <div>
+      <h2>{{ p.name }}</h2>
+      <p class="price">${{ p.price }}</p>
+      <p>{{ p.description }}</p>
+      <div class="btnrow">
+        <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business={{ site.paypalEmail | urlencode }}&item_name={{ p.name | urlencode }}&amount={{ p.price }}&currency_code=USD&no_shipping=2&no_note=0&cn={{ 'Size, color and design' | urlencode }}" target="_blank" rel="noopener">Buy with PayPal — ${{ p.price }}</a>
+        <a class="btn ghost" href="/contact">Ask about sizes</a>
+      </div>
+    </div>
+  </div></section>
+  {% endfor %}
+  <section><div class="wrap"><div class="pgrid big">{% for i in store.gallery %}<img src="{{ i.image | u }}" alt="God Is Able t-shirt designs" loading="lazy">{% endfor %}</div></div></section>
+  {% include "give.njk" %}
+</main>

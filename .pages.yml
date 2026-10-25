@@ -1,0 +1,110 @@
+media:
+  input: src/images
+  output: /images
+content:
+  - name: site
+    label: Site settings
+    type: file
+    path: src/_data/site.json
+    fields:
+      - { name: name, label: "Ministry name", type: string }
+      - { name: tagline, label: "Tagline", type: string }
+      - { name: description, label: "Google description", type: text }
+      - { name: phone, label: "Phone", type: string }
+      - { name: email, label: "Email (forms are sent here)", type: string }
+      - { name: address, label: "Address", type: string }
+      - { name: paypalEmail, label: "PayPal email for donations and store", type: string }
+      - { name: cashapp, label: "Cash App tag (with $)", type: string }
+      - { name: verse, label: "Footer verse", type: text }
+      - { name: verseRef, label: "Footer verse reference", type: string }
+      - name: socials
+        label: Social links
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Name, type: string }
+          - { name: url, label: Link, type: string }
+  - name: home
+    label: Home page
+    type: file
+    path: src/_data/home.json
+    fields:
+      - { name: heroTitle, label: "Main title", type: string }
+      - { name: heroSubtitle, label: "Subtitle", type: string }
+      - { name: heroText, label: "Intro line", type: text }
+      - { name: heroButton, label: "Main button text", type: string }
+      - { name: welcomeHeading, label: "Welcome heading", type: string }
+      - { name: welcome, label: "Welcome text", type: rich-text, options: { format: markdown } }
+      - { name: featureHeading, label: "Featured mission — heading", type: string }
+      - { name: featureText, label: "Featured mission — text", type: text }
+      - { name: featureImage, label: "Featured mission — image", type: image }
+      - { name: featureButton, label: "Featured mission — button", type: string }
+  - name: pages
+    label: Pages (About, Mission, Prayer Lines, Testimonies)
+    type: collection
+    path: src/pages
+    format: yaml-frontmatter
+    exclude: [pages.11tydata.js]
+    view: { fields: [title] }
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: eyebrow, label: "Small line above the title", type: string }
+      - { name: image, label: "Banner image", type: image }
+      - { name: body, label: Content, type: rich-text }
+  - name: gallery
+    label: Photos
+    type: file
+    path: src/_data/gallery.json
+    fields:
+      - { name: intro, label: Intro, type: text }
+      - name: albums
+        label: Albums
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Album title, type: string }
+          - name: images
+            label: Photos
+            type: object
+            list: true
+            fields:
+              - { name: image, label: Photo, type: image }
+              - { name: caption, label: Caption, type: string }
+  - name: store
+    label: Store
+    type: file
+    path: src/_data/store.json
+    fields:
+      - { name: intro, label: Intro, type: text }
+      - name: products
+        label: Products
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: price, label: "Price (e.g. 20.00)", type: string }
+          - { name: description, label: Description, type: text }
+          - { name: image, label: Image, type: image }
+      - name: gallery
+        label: Extra store images
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Image, type: image }
+  - name: partners
+    label: Prayer Partners
+    type: file
+    path: src/_data/partners.json
+    fields:
+      - { name: heading, label: Heading, type: string }
+      - name: partners
+        label: Partners
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: location, label: Location, type: string }
+          - { name: image, label: Photo, type: image }
+          - { name: verse, label: Verse, type: text }
+          - { name: verseRef, label: Verse reference, type: string }
+          - { name: bio, label: Bio, type: text }

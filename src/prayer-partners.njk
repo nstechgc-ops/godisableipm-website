@@ -1,0 +1,20 @@
+---
+layout: base.njk
+permalink: /prayer-partners/
+title: Prayer Partners
+---
+<header class="phero"><div class="wrap center"><p class="eyebrow light">Prayer Partners</p><h1>{{ partners.heading }}</h1></div></header>
+<main>
+{% for p in partners.partners %}
+  <section class="partner"><div class="wrap split">
+    {% if p.image %}<img src="{{ p.image | u }}" alt="{{ p.name }}" loading="lazy">{% else %}<div class="ph">{{ p.name }}</div>{% endif %}
+    <div>
+      <h2>{{ p.name }}</h2>
+      <p class="eyebrow">{{ p.location }}</p>
+      <blockquote>“{{ p.verse }}”<cite>{{ p.verseRef }}</cite></blockquote>
+      <div class="prose">{{ p.bio | md | safe }}</div>
+    </div>
+  </div></section>
+{% endfor %}
+{% set form = 'prayer' %}{% include "form.njk" %}
+</main>

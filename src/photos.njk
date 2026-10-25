@@ -1,0 +1,17 @@
+---
+layout: base.njk
+permalink: /photos/
+title: Photos
+---
+<header class="phero"><div class="wrap center"><p class="eyebrow light">Photo Gallery</p><h1>Photos</h1><p class="lead light">{{ gallery.intro }}</p></div></header>
+<main>
+{% for a in gallery.albums %}
+  <section class="album" id="{{ a.title | slug2 }}">
+    <div class="wrap">
+      <h2>{{ a.title }}</h2>
+      <div class="pgrid">{% for i in a.images %}{% if i.image %}<a href="{{ i.image | u }}" target="_blank" rel="noopener"><img src="{{ i.image | u }}" alt="{{ i.caption or a.title }}" loading="lazy"></a>{% endif %}{% endfor %}</div>
+    </div>
+  </section>
+{% endfor %}
+  <section><div class="wrap narrow">{% for v in gallery.verses %}<blockquote>“{{ v.text }}”<cite>{{ v.ref }}</cite></blockquote>{% endfor %}</div></section>
+</main>

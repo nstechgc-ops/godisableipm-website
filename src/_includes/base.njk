@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title and page.url != '/' %}{{ title }} | {% endif %}{{ site.name }}</title>
+<meta name="description" content="{{ description or site.description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+{% set share = (image if image and image.startsWith('/') else site.shareImage) | absUrl(site.url) %}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ title or site.name }}">
+<meta property="og:description" content="{{ description or site.description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ share }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/images/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="/styles.css?v=1">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","url":"{{ site.url }}","logo":"{{ site.url }}/images/logo.png","telephone":"{{ site.phone }}","email":"{{ site.email }}","address":{"@type":"PostalAddress","addressLocality":"Clearwater","addressRegion":"FL","postalCode":"33764","addressCountry":"US"},"sameAs":[{% for s in site.socials %}"{{ s.url }}"{% if not loop.last %},{% endif %}{% endfor %}]}</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap topin">
+    <a class="brand" href="/"><img src="/images/logo.png" alt="God Is Able International Prayer Ministries" width="140" height="105"></a>
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu">
+      {% set links = [["/","Home"],["/about","About"],["/prayer-lines","Prayer Lines"],["/mission","Mission"],["/prayer-partners","Prayer Partners"],["/testimonies","Testimonies"],["/photos","Photos"],["/store","Store"],["/contact","Contact"]] %}
+      {% for l in links %}<a href="{{ l[0] }}"{% if page.url == l[0] or page.url == l[0] + '/' %} aria-current="page"{% endif %}>{{ l[1] }}</a>{% endfor %}
+      <a class="btn small" href="/mission#give">Give</a>
+    </nav>
+  </div>
+</header>
+{{ content | safe }}
+<section class="verse">
+  <div class="wrap">
+    <p class="vtext">“{{ site.verse }}”</p>
+    <p class="vref">{{ site.verseRef }}</p>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap fgrid">
+    <div>
+      <img src="/images/logo-mono-white.png" alt="God Is Able" width="180" height="103">
+      <p class="tag">{{ site.tagline }}</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>{{ site.address }}<br><a href="tel:{{ site.phone | replace('-','') }}">{{ site.phone }}</a><br><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div>
+    <div>
+      <h4>Follow</h4>
+      <p>{% for s in site.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a><br>{% endfor %}</p>
+    </div>
+  </div>
+  <div class="wrap fbot">&copy; 2016–{{ "" | year }} {{ site.name }} · All rights reserved · Website by <a href="https://nstechglobal.com" target="_blank" rel="noopener">NS Tech Global Consulting</a></div>
+</footer>
+<script>
+(function(){var b=document.querySelector('.burger'),m=document.getElementById('menu');b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));m.classList.toggle('open',!o);});})();
+</script>
+</body>
+</html>
