@@ -14,7 +14,7 @@ At God Is Able International Prayer Ministries, our mission is rooted in serving
 
 ## Sister Lindaja Mary
 
-![Sister Lindaja Mary](/images/bz/c779d249-82374723-2598074960478967-403967486448134082-n.jpg)
+![Sister Lindaja Mary](/images/bz/c779d249-82374723-2598074960478967-403967486448134082-n.webp)
 
 Sister Lindaja Mary is the visionary founder of God Is Able International Prayer Ministry. With unwavering faith and the support of the amazing women and men within the ministry, Sister Lindaja has brought this divine calling to fruition. Through her leadership and dedication, God Is Able has become a beacon of hope and blessing to families around the world.
 
