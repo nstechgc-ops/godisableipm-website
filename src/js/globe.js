@@ -36,7 +36,10 @@
     load('/js/vendor/d3-array.min.js').then(function(){return load('/js/vendor/d3-geo.min.js')}).then(function(){return load('/js/vendor/topojson-client.min.js')})
     .then(function(){return fetch('/data/countries-110m.json').then(function(r){return r.json()})}).then(init).catch(function(){canvas.style.display='none'});
   }
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){start();io.disconnect()}},{rootMargin:'200px'});io.observe(sec)} else start();
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){start();io.disconnect()}})},{rootMargin:'300px'});io.observe(sec)}
+  // fallback: some embedded/older browsers never report intersection — start shortly after load anyway
+  function late(){setTimeout(start,1800)} if(document.readyState==='complete') late(); else window.addEventListener('load',late);
+  window.addEventListener('scroll',function sc(){var r=sec.getBoundingClientRect(); if(r.top<innerHeight+300){start();removeEventListener('scroll',sc)}},{passive:true});
 
   var ALIAS={'England':'United Kingdom','UK':'United Kingdom','United Kingdom':'United Kingdom','Scotland':'United Kingdom','Wales':'United Kingdom','USA':'United States of America','United States':'United States of America','US':'United States of America'};
   function init(world){
