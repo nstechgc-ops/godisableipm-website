@@ -7,7 +7,7 @@ order: 5
 ---
 ## "I Am a Living Testimony"
 
-![Lindaja Mary Njonga](https://images.zoogletools.com/s:bzglfiles/u/598864/a19053ced1c577946e089ffb88cbd10cdf087d6e/original/img-3458.jpg)
+![Lindaja Mary Njonga](/images/bz/a19053ce-img-3458.jpg)
 
 Greetings! My name is Lindaja Mary Njonga, and I am a living testimony of God's love and grace in my life and my family's life. Originally from Cameroon, I now reside in the USA, where I have experienced the boundless power of the blood of Jesus.
 
