@@ -88,13 +88,28 @@ blockquote cite{display:block;margin-top:.5em;font-style:normal;font-family:var(
 .verse{background:#fff;border-top:1px solid var(--line);text-align:center;padding-block:44px}
 .vtext{font-style:italic;font-size:1.2rem;color:var(--plum);max-width:760px;margin:0 auto}
 .vref{font-family:var(--f-h);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;color:var(--gold-dk)}
-.foot{background:var(--ink);color:#d9cfe2;padding-top:48px}
-.foot a{color:var(--gold-br)}
-.foot h4{color:#fff;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase}
-.fgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px}
-.foot .tag{color:var(--gold-br);font-family:var(--f-h);font-weight:600}
-.fbot{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-block:18px;font-size:.85rem}
-@media(max-width:820px){.fgrid{grid-template-columns:1fr}}
+.foot{background:var(--ink);color:#d9cfe2;padding-top:56px}
+.foot a{color:#efe6f5;text-decoration:none}
+.foot a:hover{color:var(--gold-br);text-decoration:underline;text-underline-offset:3px}
+.foot h4{color:var(--gold-br);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin:6px 0 16px}
+.fgrid{display:grid;grid-template-columns:1.25fr 1fr 1.35fr auto;gap:40px}
+.fbrand .tag{color:var(--gold-br);font-family:var(--f-h);font-weight:600;font-size:.95rem;margin:14px 0 18px}
+.foot .fbrand .btn{color:var(--ink)}
+.foot .fbrand .btn:hover{color:var(--ink);text-decoration:none}
+.flist{list-style:none;margin:0;padding:0;font-size:.98rem;line-height:1.5}
+.flist li{margin-bottom:10px;overflow-wrap:anywhere}
+.flist .fplain{color:#bfb2cc}
+.fbot{display:flex;justify-content:space-between;align-items:center;gap:8px 24px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-block:20px;font-size:.82rem;color:#a99bb8}
+.fbot .credit{margin-left:auto;text-align:right}
+.fbot .credit a{color:#d9cfe2}
+@media(max-width:820px){
+  .fgrid{grid-template-columns:1fr 1fr;gap:32px 24px}
+  .fbrand{grid-column:1/-1;text-align:center}
+  .fbrand img{margin:0 auto}
+  .fcontact{grid-column:1/-1;order:3}
+  .fbot{flex-direction:column;justify-content:center;text-align:center}
+  .fbot .credit{margin-left:0;text-align:center}
+}
 .give .btn.ghost{color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
 /* v2 upgrade */
 .menu a.navlive::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#e0245e;margin-right:6px;vertical-align:1px;box-shadow:0 0 0 0 rgba(224,36,94,.6);animation:pulse 2s infinite}

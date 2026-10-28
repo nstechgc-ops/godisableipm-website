@@ -17,7 +17,7 @@
 <link rel="icon" href="/images/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
-<link rel="stylesheet" href="/styles.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=3">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","url":"{{ site.url }}","logo":"{{ site.url }}/images/logo.png","telephone":"{{ site.phone }}","email":"{{ site.email }}","address":{"@type":"PostalAddress","addressLocality":"Clearwater","addressRegion":"FL","postalCode":"33764","addressCountry":"US"},"sameAs":[{% for s in site.socials %}"{{ s.url }}"{% if not loop.last %},{% endif %}{% endfor %}]}</script>
 </head>
 <body>
@@ -41,20 +41,43 @@
 </section>
 <footer class="foot">
   <div class="wrap fgrid">
-    <div>
-      <img src="/images/logo-mono-white.png" alt="God Is Able" width="170" style="height:auto">
+    <div class="fbrand">
+      <a href="/" aria-label="God Is Able home"><img src="/images/logo-mono-white.png" alt="God Is Able" width="150" style="height:auto"></a>
       <p class="tag">{{ site.tagline }}</p>
+      <a class="btn small" href="/mission#give">Give</a>
     </div>
-    <div>
+    <nav class="fcol" aria-label="Footer">
+      <h4>Explore</h4>
+      <ul class="flist">
+        <li><a href="/live">Live Prayer</a></li>
+        <li><a href="/prayer-lines">Prayer Lines</a></li>
+        <li><a href="/mission">Our Mission</a></li>
+        <li><a href="/testimonies">Testimonies</a></li>
+        <li><a href="/photos">Photos</a></li>
+        <li><a href="/store">Store</a></li>
+      </ul>
+    </nav>
+    <div class="fcol fcontact">
       <h4>Contact</h4>
-      <p>{{ site.address }}<br><a href="tel:{{ site.phone | replace('-','') }}">{{ site.phone }}</a><br><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <ul class="flist">
+        <li><a href="tel:{{ site.phone | replace('-','') }}">{{ site.phone }}</a></li>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li class="fplain">{{ site.address }}</li>
+      </ul>
     </div>
-    <div>
+    <div class="fcol">
       <h4>Follow</h4>
-      <p>{% for s in site.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a><br>{% endfor %}</p>
+      <ul class="flist">
+        {% for s in site.socials %}<li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a></li>{% endfor %}
+      </ul>
     </div>
   </div>
-  <div class="wrap fbot">&copy; 2016–{{ "" | year }} {{ site.name }} · All rights reserved · Website by <a href="https://nstechglobal.com" target="_blank" rel="noopener">NS Tech Global Consulting</a></div>
+  <div class="wrap">
+    <div class="fbot">
+      <span>&copy; 2016–{{ "" | year }} {{ site.name }}. All rights reserved.</span>
+      <span class="credit">Website by <a href="https://nstechglobal.com" target="_blank" rel="noopener">NS Tech Global Consulting</a></span>
+    </div>
+  </div>
 </footer>
 <script>
 (function(){var b=document.querySelector('.burger'),m=document.getElementById('menu');b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));m.classList.toggle('open',!o);});})();
