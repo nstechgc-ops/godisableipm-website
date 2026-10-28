@@ -1,0 +1,49 @@
+name: Copy Bandzoogle photos into the repo
+on:
+  workflow_dispatch:
+  push:
+    paths: [".github/localize.trigger"]
+permissions:
+  contents: write
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download photos and point the site at the local copies
+        run: |
+          python3 - <<'PY'
+          import re, os, json, base64, glob, urllib.request
+          tf = base64.b64encode(json.dumps([["resize", 1800], ["max"]], separators=(",", ":")).encode()).decode()
+          rx = re.compile(r'(?:https:)?//images\.zoogletools\.com/[^"\')\s]+')
+          os.makedirs("src/images/bz", exist_ok=True)
+          files = [f for f in glob.glob("src/**/*", recursive=True) if os.path.isfile(f) and f.endswith((".json", ".md", ".njk", ".html", ".yml"))]
+          done = {}
+          for f in files:
+              t = open(f, encoding="utf-8").read()
+              urls = set(rx.findall(t))
+              if not urls: continue
+              for u in urls:
+                  base = u.split("/!!/")[0]
+                  if base not in done:
+                      parts = base.split("/")
+                      name = parts[-3][:8] + "-" + re.sub(r"[^a-z0-9.]+", "-", parts[-1].lower())
+                      name = re.sub(r"\.(jpeg|png|webp|gif)$", ".jpg", name) if not name.endswith(".jpg") else name
+                      out = "src/images/bz/" + name
+                      if not os.path.exists(out):
+                          src = ("https:" + base if base.startswith("//") else base) + "/!!/b%3A" + tf
+                          data = urllib.request.urlopen(urllib.request.Request(src, headers={"User-Agent": "Mozilla/5.0"}), timeout=60).read()
+                          open(out, "wb").write(data)
+                          print("saved", out, len(data))
+                      done[base] = "/images/bz/" + name
+                  t = t.replace(u, done[base])
+              open(f, "w", encoding="utf-8").write(t)
+          print(len(done), "photos")
+          PY
+      - name: Commit
+        run: |
+          git config user.name "NS Tech bot"
+          git config user.email "info@nstechglobal.com"
+          git add -A src
+          git diff --cached --quiet || git commit -m "Copy Bandzoogle photos into the site and use local copies"
+          git push
