@@ -3,7 +3,7 @@ layout: base.njk
 permalink: /photos/
 title: Photos
 ---
-<header class="phero"><div class="wrap center"><p class="eyebrow light">Photo Gallery</p><h1>Photos</h1><p class="lead light">{{ gallery.intro }}</p></div></header>
+<header class="phero"><div class="wrap pheroin"><img class="pherologo" src="/images/logo-stacked-reverse.svg" alt="" width="230" height="172"><div class="pherotxt"><p class="eyebrow light">Photo Gallery</p><h1>Photos</h1><p class="lead light">{{ gallery.intro }}</p></div></div></header>
 <main>
 {% for a in gallery.albums %}
   <section class="album" id="{{ a.title | slug2 }}">

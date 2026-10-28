@@ -1,0 +1,14 @@
+{
+  "eyebrow": "A Global Family",
+  "heading": "Praying together across the world",
+  "intro": "Wherever you are, someone in the God Is Able family is praying with you. Tap a country to find it on the globe.",
+  "home": "United States",
+  "locations": [
+    { "country": "United States", "city": "Clearwater, Florida", "flag": "🇺🇸", "lat": 27.97, "lng": -82.80, "timezone": "America/New_York" },
+    { "country": "Canada", "city": "", "flag": "🇨🇦", "lat": 43.65, "lng": -79.38, "timezone": "America/Toronto" },
+    { "country": "England", "city": "", "flag": "🇬🇧", "lat": 51.51, "lng": -0.13, "timezone": "Europe/London" },
+    { "country": "Germany", "city": "", "flag": "🇩🇪", "lat": 51.17, "lng": 10.45, "timezone": "Europe/Berlin" },
+    { "country": "Nigeria", "city": "", "flag": "🇳🇬", "lat": 9.08, "lng": 8.68, "timezone": "Africa/Lagos" },
+    { "country": "Cameroon", "city": "", "flag": "🇨🇲", "lat": 5.69, "lng": 12.35, "timezone": "Africa/Douala" }
+  ]
+}

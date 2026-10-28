@@ -146,3 +146,23 @@ content:
         fields:
           - { name: ref, label: Reference, type: string }
           - { name: text, label: Verse text, type: text }
+  - name: locations
+    label: Globe (countries)
+    type: file
+    path: src/_data/locations.json
+    fields:
+      - { name: eyebrow, label: "Small line above heading", type: string }
+      - { name: heading, label: Heading, type: string }
+      - { name: intro, label: Intro, type: text }
+      - { name: home, label: "Home country (arcs start here — must match a country below)", type: string }
+      - name: locations
+        label: Countries
+        type: object
+        list: true
+        fields:
+          - { name: country, label: "Country (e.g. Ghana)", type: string }
+          - { name: city, label: "City (optional)", type: string }
+          - { name: flag, label: "Flag emoji (e.g. 🇬🇭)", type: string }
+          - { name: lat, label: "Latitude (from Google Maps, e.g. 5.60)", type: number }
+          - { name: lng, label: "Longitude (e.g. -0.19)", type: number }
+          - { name: timezone, label: "Time zone (e.g. Africa/Accra, Europe/Paris, America/Chicago)", type: string }

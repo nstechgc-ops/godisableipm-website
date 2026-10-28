@@ -1,0 +1,26 @@
+{# Spinning prayer globe: country list + live local times. Globe is drawn by /js/globe.js #}
+{% set L = locations %}
+<section class="globesec" id="worldwide" aria-labelledby="globe-h">
+  <div class="wrap globegrid">
+    <div class="globewrap">
+      <canvas class="globe" aria-hidden="true"></canvas>
+      <p class="globehint">Drag to turn the globe</p>
+    </div>
+    <div>
+      <p class="eyebrow">{{ L.eyebrow }}</p>
+      <h2 id="globe-h">{{ L.heading }}</h2>
+      <p class="lead">{{ L.intro }}</p>
+      <ul class="places" data-home="{{ L.home }}" data-prayer-start="{{ live.sessions[0].start if live.sessions and live.sessions[0] else '05:00' }}">
+        {% for p in L.locations %}
+        <li><button type="button" class="place" data-country="{{ p.country }}" data-lat="{{ p.lat }}" data-lng="{{ p.lng }}" data-tz="{{ p.timezone }}">
+          <span class="pflag" aria-hidden="true">{{ p.flag }}</span>
+          <span class="pname">{{ p.country }}{% if p.city %}<small>{{ p.city }}</small>{% endif %}</span>
+          <span class="ptime" data-time>—</span>
+          <span class="pmeta"><span data-daynight></span> <span data-prayer></span></span>
+        </button></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+<script src="/js/globe.js" defer></script>
