@@ -3,7 +3,7 @@
 {% set first = vlist[0] %}
 <section class="votd" id="verse-of-the-day">
   <div class="wrap narrow center">
-    <p class="eyebrow light">Verse of the Day · <span data-votd-date></span></p>
+    <p class="eyebrow">Verse of the Day · <span data-votd-date></span></p>
     <blockquote class="votdq">
       <p data-votd-text{% if first.text[0] in '“"‘' %} class="q"{% endif %}>{{ first.text }}</p>
       <cite data-votd-ref>{{ first.ref }}</cite>

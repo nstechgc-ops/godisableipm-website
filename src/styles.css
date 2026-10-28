@@ -164,7 +164,7 @@ blockquote.big{font-size:clamp(1.15rem,2.2vw,1.45rem);border:0;background:none;p
 .phero{padding-bottom:calc(clamp(56px,9vw,110px) + 50px)}
 .phero::after{background:linear-gradient(180deg,rgba(248,244,251,0),var(--l1))}
 .votd{border-top:0;background:linear-gradient(180deg,#22092f 0%,#2f1145 45%,#3d1f58 100%);padding-bottom:calc(clamp(48px,7vw,80px) + 70px)}
-.votd::after{background:linear-gradient(180deg,rgba(214,198,232,0),var(--l4))}
+
 /* light sections step through lavender shades */
 .welcomesec{background:linear-gradient(180deg,var(--l4) 0%,var(--l3) 18%,var(--l1) 70%,var(--l1) 100%)}
 .cards{background:linear-gradient(180deg,var(--l1) 0%,var(--l2) 50%,var(--l3) 100%)}
@@ -185,3 +185,19 @@ blockquote.big{font-size:clamp(1.15rem,2.2vw,1.45rem);border:0;background:none;p
 .votdq p.q::before,.votdq p.q::after{content:none}
 @media(max-width:1180px) and (min-width:821px){.menu{gap:4px 11px}.menu a{font-size:.8rem}}
 .herologo{max-width:420px;margin-inline:auto}
+
+/* ===== Verse of the Day: light lavender (v7) ===== */
+.hero{position:relative;isolation:isolate;padding-bottom:calc(clamp(48px,8vw,96px) + 90px)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:170px;background:linear-gradient(180deg,rgba(214,198,232,0),rgba(214,198,232,.55) 55%,#d6c6e8);pointer-events:none;z-index:-1}
+.votd{color:var(--plum);border-top:0;padding-block:clamp(40px,6vw,70px) clamp(56px,7vw,84px);
+  background:url(/images/icon-watermark.svg) center 55%/auto 88% no-repeat,linear-gradient(180deg,#d6c6e8 0%,#e3d6ef 40%,#efe6f6 100%)}
+.votd::after{display:none}
+.votd .eyebrow{color:var(--gold-dk)}
+.votdq{color:var(--plum)}
+.votdq p{color:var(--plum)}
+.votdq p::before,.votdq p::after{color:var(--gold)}
+.votdq cite{color:var(--gold-dk)}
+.votd .chip{color:var(--plum);border-color:rgba(52,18,68,.28);background:rgba(255,255,255,.55)}
+.votd .chip:hover{color:var(--purple-2);border-color:var(--purple-2);background:#fff}
+.votdsrc{color:#7a6c88}
+.welcomesec{background:linear-gradient(180deg,var(--l2) 0%,var(--l1) 45%,var(--l1) 100%)}
