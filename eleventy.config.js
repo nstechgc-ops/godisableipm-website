@@ -1,7 +1,7 @@
 import markdownIt from "markdown-it";
 const md = markdownIt({ html: true, linkify: true, typographer: true });
 export default function (c) {
-  ["src/images", "src/styles.css", "src/robots.txt", "src/_headers", "src/_redirects"].forEach((p) => c.addPassthroughCopy(p));
+  ["src/images", "src/styles.css", "src/robots.txt", "src/_headers", "src/_redirects", "src/favicon.ico"].forEach((p) => c.addPassthroughCopy(p));
   c.setLibrary("md", md);
   c.addFilter("md", (s) => (s ? md.render(String(s)) : ""));
   c.addFilter("slug2", (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""));

@@ -14,16 +14,18 @@
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:image" content="{{ share }}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/images/favicon.png" type="image/png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
-<link rel="stylesheet" href="/styles.css?v=5">
+<link rel="stylesheet" href="/styles.css?v=6">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","url":"{{ site.url }}","logo":"{{ site.url }}/images/logo.png","telephone":"{{ site.phone }}","email":"{{ site.email }}","address":{"@type":"PostalAddress","addressLocality":"Clearwater","addressRegion":"FL","postalCode":"33764","addressCountry":"US"},"sameAs":[{% for s in site.socials %}"{{ s.url }}"{% if not loop.last %},{% endif %}{% endfor %}]}</script>
 </head>
 <body>
 <header class="top">
   <div class="wrap topin">
-    <a class="brand" href="/"><img src="/images/logo.png" alt="God Is Able International Prayer Ministries" width="140" height="105"></a>
+    <a class="brand" href="/"><img src="/images/logo-horizontal.svg" alt="God Is Able International Prayer Ministries" width="160" height="46"></a>
     <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     <nav class="menu" id="menu">
       {% set links = [["/","Home"],["/about","About"],["/live","Live Prayer"],["/prayer-lines","Prayer Lines"],["/mission","Mission"],["/prayer-partners","Prayer Partners"],["/testimonies","Testimonies"],["/photos","Photos"],["/store","Store"],["/contact","Contact"]] %}
@@ -43,7 +45,7 @@
 <footer class="foot">
   <div class="wrap fgrid">
     <div class="fbrand">
-      <a href="/" aria-label="God Is Able home"><img src="/images/logo-mono-white.png" alt="God Is Able" width="150" style="height:auto"></a>
+      <a href="/" aria-label="God Is Able home"><img src="/images/logo-stacked-reverse.svg" alt="God Is Able International Prayer Ministries" width="230" height="172"></a>
       <p class="tag">{{ site.tagline }}</p>
       <a class="btn small" href="/mission#give">Give</a>
     </div>

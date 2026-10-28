@@ -5,7 +5,7 @@
   <div class="wrap narrow center">
     <p class="eyebrow light">Verse of the Day · <span data-votd-date></span></p>
     <blockquote class="votdq">
-      <p data-votd-text>{{ first.text }}</p>
+      <p data-votd-text{% if first.text[0] in '“"‘' %} class="q"{% endif %}>{{ first.text }}</p>
       <cite data-votd-ref>{{ first.ref }}</cite>
     </blockquote>
     <div class="share">
@@ -23,7 +23,7 @@
     var now=new Date(), start=new Date(2026,0,1);
     var day=Math.floor((new Date(now.getFullYear(),now.getMonth(),now.getDate())-start)/864e5);
     var v=list[((day%list.length)+list.length)%list.length];
-    el.querySelector('[data-votd-text]').textContent=v.text;
+    var tp=el.querySelector('[data-votd-text]');tp.textContent=v.text;tp.classList.toggle('q',/^[“"‘]/.test(v.text));
     el.querySelector('[data-votd-ref]').textContent=v.ref;
     el.querySelector('[data-votd-date]').textContent=now.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
     var msg=v.text+' — '+v.ref+' (WEB)\n\n'+location.origin+'/#verse-of-the-day';
