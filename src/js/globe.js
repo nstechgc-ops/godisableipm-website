@@ -48,7 +48,12 @@
     var land=topojson.merge(world,world.objects.countries.geometries);
     var places=btns.map(function(b){var c=b.getAttribute('data-country');return{btn:b,name:c,lonlat:[+b.getAttribute('data-lng'),+b.getAttribute('data-lat')],geo:ALIAS[c]||c}});
     var active={};places.forEach(function(p){active[p.geo]=true});
-    var activeFeat=countries.filter(function(f){return active[f.properties.name]});
+    var byGeo={};places.forEach(function(p){byGeo[p.geo]=p});
+    // highlight only the part of each country near its pin (e.g. France without French Guiana)
+    var activeFeat=countries.filter(function(f){return active[f.properties.name]}).map(function(f){
+      var g=f.geometry, pin=byGeo[f.properties.name].lonlat; if(g.type!=='MultiPolygon') return f;
+      var keep=g.coordinates.filter(function(poly){return d3.geoDistance(d3.geoCentroid({type:'Polygon',coordinates:poly}),pin)<1.05});
+      return keep.length?{type:'Feature',properties:f.properties,geometry:{type:'MultiPolygon',coordinates:keep}}:f;});
     var homeName=list.getAttribute('data-home'), home=places.filter(function(p){return p.name===homeName})[0]||places[0];
     var arcs=places.filter(function(p){return p!==home}).map(function(p){return{type:'LineString',coordinates:[home.lonlat,p.lonlat]}});
     var proj=d3.geoOrthographic().clipAngle(90).precision(.5), path=d3.geoPath(proj,ctx), grat=d3.geoGraticule10();
@@ -92,9 +97,10 @@
       vis.sort(function(a,b){return (sel===a.p?-1:0)-(sel===b.p?-1:0)||a.xy[1]-b.xy[1]});
       vis.forEach(function(v){ var on=sel===v.p; ctx.font=(on?'700 ':'600 ')+fs+'px Montserrat,system-ui,sans-serif';
         var w=ctx.measureText(v.p.name).width, h=fs+4, x=v.xy[0], y=v.xy[1];
-        var opts=[[x+9,y-10,'left'],[x-9,y-10,'right'],[x+9,y+11,'left'],[x-9,y+11,'right']], pick=opts[0];
-        for(var i=0;i<opts.length;i++){ var o=opts[i], bx=o[2]==='left'?o[0]:o[0]-w, b=[bx-2,o[1]-h/2,bx+w+2,o[1]+h/2];
-          if(!boxes.some(function(q){return b[0]<q[2]&&b[2]>q[0]&&b[1]<q[3]&&b[3]>q[1]})){pick=o;boxes.push(b);break} }
+        var opts=[[x+9,y-10,'left'],[x-9,y-10,'right'],[x+9,y+11,'left'],[x-9,y+11,'right'],[x,y-18,'center'],[x,y+19,'center'],[x+10,y,'left'],[x-10,y,'right']], pick=null;
+        for(var i=0;i<opts.length;i++){ var o=opts[i], bx=o[2]==='left'?o[0]:o[2]==='right'?o[0]-w:o[0]-w/2, b=[bx-2,o[1]-h/2,bx+w+2,o[1]+h/2];
+          if(b[0]>=2&&b[2]<=size-2&&b[1]>=2&&b[3]<=size-2&&!boxes.some(function(q){return b[0]<q[2]&&b[2]>q[0]&&b[1]<q[3]&&b[3]>q[1]})){pick=o;boxes.push(b);break} }
+        if(!pick){ if(!on) return; pick=opts[0]; }  // crowded: hide the label (the card list still names it); the selected one always shows
         ctx.textAlign=pick[2]; ctx.lineWidth=3.5; ctx.strokeStyle='rgba(26,7,38,.85)'; ctx.strokeText(v.p.name,pick[0],pick[1]);
         ctx.fillStyle=on?'#F2D27A':'#fff'; ctx.fillText(v.p.name,pick[0],pick[1]); });
       ctx.textAlign='left';

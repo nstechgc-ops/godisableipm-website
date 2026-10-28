@@ -4,11 +4,77 @@
   "intro": "Wherever you are, someone in the God Is Able family is praying with you. Tap a country to find it on the globe.",
   "home": "United States",
   "locations": [
-    { "country": "United States", "city": "Clearwater, Florida", "flag": "🇺🇸", "lat": 27.97, "lng": -82.80, "timezone": "America/New_York" },
-    { "country": "Canada", "city": "", "flag": "🇨🇦", "lat": 43.65, "lng": -79.38, "timezone": "America/Toronto" },
-    { "country": "England", "city": "", "flag": "🇬🇧", "lat": 51.51, "lng": -0.13, "timezone": "Europe/London" },
-    { "country": "Germany", "city": "", "flag": "🇩🇪", "lat": 51.17, "lng": 10.45, "timezone": "Europe/Berlin" },
-    { "country": "Nigeria", "city": "", "flag": "🇳🇬", "lat": 9.08, "lng": 8.68, "timezone": "Africa/Lagos" },
-    { "country": "Cameroon", "city": "", "flag": "🇨🇲", "lat": 5.69, "lng": 12.35, "timezone": "Africa/Douala" }
+    {
+      "country": "United States",
+      "city": "Clearwater, Florida",
+      "flag": "🇺🇸",
+      "lat": 27.97,
+      "lng": -82.8,
+      "timezone": "America/New_York"
+    },
+    {
+      "country": "Canada",
+      "city": "",
+      "flag": "🇨🇦",
+      "lat": 43.65,
+      "lng": -79.38,
+      "timezone": "America/Toronto"
+    },
+    {
+      "country": "England",
+      "city": "",
+      "flag": "🇬🇧",
+      "lat": 51.51,
+      "lng": -0.13,
+      "timezone": "Europe/London"
+    },
+    {
+      "country": "France",
+      "city": "",
+      "flag": "🇫🇷",
+      "lat": 46.6,
+      "lng": 2.4,
+      "timezone": "Europe/Paris"
+    },
+    {
+      "country": "Germany",
+      "city": "",
+      "flag": "🇩🇪",
+      "lat": 51.17,
+      "lng": 10.45,
+      "timezone": "Europe/Berlin"
+    },
+    {
+      "country": "Sierra Leone",
+      "city": "",
+      "flag": "🇸🇱",
+      "lat": 8.46,
+      "lng": -11.78,
+      "timezone": "Africa/Freetown"
+    },
+    {
+      "country": "Nigeria",
+      "city": "",
+      "flag": "🇳🇬",
+      "lat": 9.08,
+      "lng": 8.68,
+      "timezone": "Africa/Lagos"
+    },
+    {
+      "country": "Cameroon",
+      "city": "",
+      "flag": "🇨🇲",
+      "lat": 5.69,
+      "lng": 12.35,
+      "timezone": "Africa/Douala"
+    },
+    {
+      "country": "Uganda",
+      "city": "",
+      "flag": "🇺🇬",
+      "lat": 1.37,
+      "lng": 32.29,
+      "timezone": "Africa/Kampala"
+    }
   ]
 }
