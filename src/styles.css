@@ -1,7 +1,7 @@
 :root{
   --ink:#1f0a2e; --plum:#2a0f3d; --purple:#9b00cc; --purple-2:#7a1fa2;
   --gold:#d4a83a; --gold-br:#f2d27a; --gold-dk:#9a6b2e;
-  --cream:#fbf7ef; --cream-2:#f3ead9; --text:#2b2233; --muted:#6b5f73; --line:#e6dcc8;
+  --cream:#f8f4fb; --cream-2:#efe6f6; --text:#2b2233; --muted:#6b5f73; --line:#e6dcc8;
   --f-h:"Montserrat",system-ui,sans-serif; --f-b:"Lora",Georgia,serif; --maxw:1120px;
 }
 *{box-sizing:border-box}
@@ -154,3 +154,28 @@ blockquote.big{font-size:clamp(1.15rem,2.2vw,1.45rem);border:0;background:none;p
 .watchrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
 .liveside .card{margin-bottom:16px;border-top-color:var(--gold)}
 .small{font-size:.88rem;color:var(--muted)}
+
+/* ===== Purple blend: soft transitions between sections (v5) ===== */
+:root{--l1:#f8f4fb;--l2:#efe6f6;--l3:#e6daf1;--l4:#d6c6e8;--mauve:#6b5a85;--fh:120px}
+.fade-b,.fade-t,.phero,.votd,.give,.foot{position:relative;isolation:isolate}
+.phero::after,.votd::after,.give::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--fh);pointer-events:none;z-index:-1}
+.give::before,.foot::before{content:"";position:absolute;left:0;right:0;top:0;height:var(--fh);pointer-events:none;z-index:-1}
+/* dark sections fade out at the bottom into the lilac that follows */
+.phero{padding-bottom:calc(clamp(56px,9vw,110px) + 50px)}
+.phero::after{background:linear-gradient(180deg,rgba(248,244,251,0),var(--l1))}
+.votd{border-top:0;background:linear-gradient(180deg,#22092f 0%,#2f1145 45%,#3d1f58 100%);padding-bottom:calc(clamp(48px,7vw,80px) + 70px)}
+.votd::after{background:linear-gradient(180deg,rgba(214,198,232,0),var(--l4))}
+/* light sections step through lavender shades */
+.welcomesec{background:linear-gradient(180deg,var(--l4) 0%,var(--l3) 18%,var(--l1) 70%,var(--l1) 100%)}
+.cards{background:linear-gradient(180deg,var(--l1) 0%,var(--l2) 50%,var(--l3) 100%)}
+.feature{background:linear-gradient(180deg,var(--l3) 0%,var(--l1) 60%)}
+.testi{background:linear-gradient(180deg,var(--l1) 0%,var(--l2) 60%,var(--l3) 100%)}
+/* give band: fades in from lilac, out to lilac */
+.give{background:linear-gradient(180deg,var(--mauve) 0%,#4a2a66 35%,var(--plum) 70%,#3d1f58 100%);padding-block:calc(clamp(44px,7vw,84px) + 60px)}
+.give::before{background:linear-gradient(180deg,var(--l3),rgba(230,218,241,0))}
+.give::after{background:linear-gradient(180deg,rgba(239,230,246,0),var(--l2))}
+/* footer verse band + footer */
+.verse{background:linear-gradient(180deg,var(--l2) 0%,var(--l3) 100%);border-top:0}
+.foot{background:linear-gradient(180deg,var(--mauve) 0%,#3d1f58 22%,var(--ink) 60%);padding-top:calc(56px + 60px)}
+.foot::before{background:linear-gradient(180deg,var(--l3),rgba(230,218,241,0))}
+.give .eyebrow{color:var(--gold-br)}
