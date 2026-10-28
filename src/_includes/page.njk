@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 ---
-<header class="phero"{% if image %} style="background-image:linear-gradient(rgba(34,8,52,.72),rgba(34,8,52,.88)),url('{{ image | u }}')"{% endif %}>
+{% if image and '-1920.webp' in image %}<header class="phero art" style="--bg:url('{{ image }}');--bgm:url('{{ image | replace('-1920.webp','-1000.webp') }}')">{% else %}<header class="phero"{% if image %} style="background-image:linear-gradient(rgba(34,8,52,.72),rgba(34,8,52,.88)),url('{{ image | u }}')"{% endif %}>{% endif %}
   <div class="wrap center">
     {% if eyebrow %}<p class="eyebrow light">{{ eyebrow }}</p>{% endif %}
     <h1>{{ title }}</h1>

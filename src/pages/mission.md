@@ -1,7 +1,7 @@
 ---
 title: Our Mission
 eyebrow: Serving Children. Strengthening Families. Transforming Communities.
-image: https://images.zoogletools.com/s:bzglfiles/u/598864/6b1ec8de187673dafa0baf68757785d4f98f310b/original/giai.jpg
+image: /images/art-mission-1920.webp
 donate: true
 order: 2
 ---

@@ -1,7 +1,7 @@
 ---
 title: About Us
 eyebrow: Who We Are
-image: https://images.zoogletools.com/s:bzglfiles/u/598864/3071683368b7e131324be10aba0e259afcd0330b/original/img-8969.jpg
+image: /images/art-about-1920.webp
 order: 1
 ---
 ## Our Mission

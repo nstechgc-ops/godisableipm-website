@@ -1,7 +1,7 @@
 ---
 title: Join Our Prayer Lines
 eyebrow: Prayer Lines Open 24/7
-image: https://images.zoogletools.com/s:bzglfiles/u/598864/de022434350ef030b211ca0cbcc708545685ca4f/original/gia-ws1.jpg
+image: /images/art-prayer-lines-1920.webp
 form: prayer
 order: 3
 ---

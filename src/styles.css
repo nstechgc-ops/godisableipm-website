@@ -201,3 +201,13 @@ blockquote.big{font-size:clamp(1.15rem,2.2vw,1.45rem);border:0;background:none;p
 .votd .chip:hover{color:var(--purple-2);border-color:var(--purple-2);background:#fff}
 .votdsrc{color:#7a6c88}
 .welcomesec{background:linear-gradient(180deg,var(--l2) 0%,var(--l1) 45%,var(--l1) 100%)}
+
+/* ===== Artwork banners (v8) ===== */
+.phero.art{--ov:linear-gradient(180deg,rgba(31,10,46,.62) 0%,rgba(31,10,46,.5) 45%,rgba(31,10,46,.35) 100%);background-image:var(--ov),var(--bg);background-size:cover;background-position:center;padding-block:clamp(80px,13vw,170px) calc(clamp(80px,13vw,170px) + 50px)}
+.phero.art h1{text-shadow:0 2px 18px rgba(20,5,30,.55)}
+.phero.art .eyebrow,.phero.art .lead{text-shadow:0 1px 10px rgba(20,5,30,.6)}
+@media(max-width:700px){.phero.art{background-image:var(--ov),var(--bgm)}}
+.hero{background:linear-gradient(90deg,rgba(31,10,46,.15) 0%,rgba(31,10,46,.35) 40%,rgba(31,10,46,.78) 62%,rgba(31,10,46,.85) 100%),url(/images/art-hero-1920.webp) center/cover no-repeat}
+@media(max-width:820px){.hero{background:linear-gradient(180deg,rgba(31,10,46,.25) 0%,rgba(31,10,46,.55) 35%,rgba(31,10,46,.82) 60%),url(/images/art-hero-1000.webp) 30% center/cover no-repeat}}
+.herologo{filter:drop-shadow(0 10px 28px rgba(20,5,30,.6))}
+.verse{background:linear-gradient(180deg,rgba(239,230,246,.86),rgba(230,218,241,.80)),url(/images/art-verse-1920.webp) center/cover no-repeat}

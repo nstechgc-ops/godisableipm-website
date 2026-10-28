@@ -1,7 +1,7 @@
 ---
 title: Testimonies
 eyebrow: All Honor and Glory Belongs to God
-image: https://images.zoogletools.com/s:bzglfiles/u/598864/1436ecb4885389799cc51e15c6c98ff31661d03b/original/gia14.jpg
+image: /images/art-testimonies-1920.webp
 form: testimony
 order: 5
 ---
