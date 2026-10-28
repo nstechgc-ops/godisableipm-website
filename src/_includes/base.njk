@@ -17,7 +17,7 @@
 <link rel="icon" href="/images/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
-<link rel="stylesheet" href="/styles.css?v=3">
+<link rel="stylesheet" href="/styles.css?v=4">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","url":"{{ site.url }}","logo":"{{ site.url }}/images/logo.png","telephone":"{{ site.phone }}","email":"{{ site.email }}","address":{"@type":"PostalAddress","addressLocality":"Clearwater","addressRegion":"FL","postalCode":"33764","addressCountry":"US"},"sameAs":[{% for s in site.socials %}"{{ s.url }}"{% if not loop.last %},{% endif %}{% endfor %}]}</script>
 </head>
 <body>
@@ -39,6 +39,7 @@
     <p class="vref">{{ site.verseRef }}</p>
   </div>
 </section>
+{% from "icon.njk" import icon %}
 <footer class="foot">
   <div class="wrap fgrid">
     <div class="fbrand">
@@ -60,15 +61,15 @@
     <div class="fcol fcontact">
       <h4>Contact</h4>
       <ul class="flist">
-        <li><a href="tel:{{ site.phone | replace('-','') }}">{{ site.phone }}</a></li>
-        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        <li class="fplain">{{ site.address }}</li>
+        <li><a class="iline" href="tel:{{ site.phone | replace('-','') }}">{{ icon("phone") }}<span>{{ site.phone }}</span></a></li>
+        <li><a class="iline" href="mailto:{{ site.email }}">{{ icon("email") }}<span>{{ site.email }}</span></a></li>
+        <li><a class="iline" href="https://www.google.com/maps/search/?api=1&amp;query={{ site.address | urlencode }}" target="_blank" rel="noopener">{{ icon("address") }}<span>{{ site.address }}</span></a></li>
       </ul>
     </div>
     <div class="fcol">
       <h4>Follow</h4>
       <ul class="flist">
-        {% for s in site.socials %}<li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a></li>{% endfor %}
+        {% for s in site.socials %}<li><a class="iline" href="{{ s.url }}" target="_blank" rel="noopener">{{ icon(s.label) }}<span>{{ s.label }}</span></a></li>{% endfor %}
       </ul>
     </div>
   </div>

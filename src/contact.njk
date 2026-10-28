@@ -3,12 +3,13 @@ layout: base.njk
 permalink: /contact/
 title: Contact
 ---
+{% from "icon.njk" import icon %}
 <header class="phero"><div class="wrap center"><p class="eyebrow light">Drop Your Prayer Requests or Leave a Testimony</p><h1>Contact Us</h1></div></header>
 <main>
   <section><div class="wrap grid3 center">
-    <div class="card"><h3>Call</h3><p><a href="tel:{{ site.phone | replace('-','') }}">{{ site.phone }}</a></p></div>
-    <div class="card"><h3>Email</h3><p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p></div>
-    <div class="card"><h3>Visit</h3><p>{{ site.address }}</p></div>
+    <div class="card ccard">{{ icon("phone","cico") }}<h3>Call</h3><p><a href="tel:{{ site.phone | replace('-','') }}">{{ site.phone }}</a></p></div>
+    <div class="card ccard">{{ icon("email","cico") }}<h3>Email</h3><p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p></div>
+    <div class="card ccard">{{ icon("address","cico") }}<h3>Visit</h3><p><a href="https://www.google.com/maps/search/?api=1&amp;query={{ site.address | urlencode }}" target="_blank" rel="noopener">{{ site.address }}</a></p></div>
   </div></section>
   {% include "form.njk" %}
 </main>
